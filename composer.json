@@ -1,6 +1,8 @@
 {
 	"name": "ozairp/paybud",
 	"description": "PayPal object factory",
+	"keywords": ["paypal", "factory"],
+	"homepage": "https://github.com/OzairP/PayBud",
 	"type": "library",
 	"repositories": [
 		{
@@ -9,7 +11,8 @@
 		}
 	],
 	"require": {
-		"paypal/rest-api-sdk-php": "^1.11"
+		"paypal/rest-api-sdk-php": "^1.11",
+		"php": ">=5.3.0"
 	},
 	"license": "MIT",
 	"authors": [
