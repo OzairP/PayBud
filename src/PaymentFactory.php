@@ -2,7 +2,7 @@
 
 namespace PayBud;
 
-require('./vendor/autoload.php');
+require('../vendor/autoload.php');
 
 use PayPal\Api\Amount;
 use PayPal\Api\Details;
