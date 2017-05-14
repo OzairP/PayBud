@@ -1,7 +1,13 @@
 {
-	"name": "ozairpatel/pay-bud",
+	"name": "ozairp/paybud",
 	"description": "PayPal object factory",
 	"type": "library",
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/OzairP/PayBud"
+		}
+	],
 	"require": {
 		"paypal/rest-api-sdk-php": "^1.11"
 	},
@@ -11,5 +17,10 @@
 			"name": "Ozair Patel",
 			"email": "ozairpatel2@gmail.com"
 		}
-	]
+	],
+	"autoload": {
+		"psr-0" : {
+			"OzairP\\PayBud" : "src"
+		}
+	}
 }
