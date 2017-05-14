@@ -1,6 +1,6 @@
 <?php
 
-namespace PayBud;
+namespace OzairP\PayBud;
 
 use Exception;
 

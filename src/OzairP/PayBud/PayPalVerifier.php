@@ -1,13 +1,13 @@
 <?php
 
-namespace PayBud;
+namespace OzairP\PayBud;
 
 use PayPal\Api\Payment;
 use PayPal\Exception\PayPalConnectionException;
 
 /**
  * Class PayPalVerifier
- * @package PayBud
+ * @package OzairP\PayBud
  */
 class PayPalVerifier
 {
@@ -17,11 +17,11 @@ class PayPalVerifier
      * params set `paymentId`, `token`, `PayerID`
      * This is called where the success url is hosted
      *
-     * @param string          $PaymentID
-     * @param \PayBud\Context $Context
+     * @param string                 $PaymentID
+     * @param \OzairP\PayBud\Context $Context
      *
      * @return bool
-     * @throws \PayBud\VerificationException
+     * @throws \OzairP\PayBud\VerificationException
      * @throws \TypeError
      */
     public function Verify($PaymentID, Context $Context)

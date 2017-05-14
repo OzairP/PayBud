@@ -1,12 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ozairpatel
- * Date: 5/14/17
- * Time: 4:40 AM
- */
 
-namespace PayBud;
+namespace OzairP\PayBud;
 
 
 use PayPal\Auth\OAuthTokenCredential;

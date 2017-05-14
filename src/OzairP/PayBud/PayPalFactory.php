@@ -1,10 +1,10 @@
 <?php
 
-namespace PayBud;
+namespace OzairP\PayBud;
 
 /**
  * Class Factory
- * @package PayBud
+ * @package OzairP\PayBud
  */
 class PayPalFactory
 {
@@ -18,7 +18,7 @@ class PayPalFactory
     }
 
     /**
-     * @return \PayBud\PayPalVerifier
+     * @return \OzairP\PayBud\PayPalVerifier
      */
     public static function CreateVerifier()
     {
@@ -30,7 +30,7 @@ class PayPalFactory
      * @param string $ClientSecret
      * @param string $Mode
      *
-     * @return \PayBud\Context
+     * @return \OzairP\PayBud\Context
      */
     public static function CreateContext($ClientID, $ClientSecret, $Mode = 'live')
     {

@@ -1,8 +1,6 @@
 <?php
 
-namespace PayBud;
-
-require('../vendor/autoload.php');
+namespace OzairP\PayBud;
 
 use PayPal\Api\Amount;
 use PayPal\Api\Details;
@@ -109,7 +107,7 @@ class PaymentFactory
      * URL, and `PaymentID` is the payment id use for
      * verification
      *
-     * @param \PayBud\Context $Context
+     * @param \OzairP\PayBud\Context $Context
      *
      * @return array
      */
@@ -217,7 +215,7 @@ class PaymentFactory
     /**
      * @param int $Shipping
      *
-     * @return \PayBud\PaymentFactory
+     * @return \OzairP\PayBud\PaymentFactory
      * @throws \Exception
      */
     public function SetShippingPrice($Shipping)
