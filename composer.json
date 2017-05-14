@@ -1,0 +1,15 @@
+{
+	"name": "ozairpatel/pay-bud",
+	"description": "PayPal object factory",
+	"type": "library",
+	"require": {
+		"paypal/rest-api-sdk-php": "^1.11"
+	},
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Ozair Patel",
+			"email": "ozairpatel2@gmail.com"
+		}
+	]
+}
