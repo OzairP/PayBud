@@ -4,6 +4,7 @@ namespace OzairP\PayBud;
 
 use PayPal\Api\Payment;
 use PayPal\Exception\PayPalConnectionException;
+use PayPal\Rest\ApiContext;
 
 /**
  * Class PayPalVerifier
@@ -17,14 +18,14 @@ class PayPalVerifier
      * params set `paymentId`, `token`, `PayerID`
      * This is called where the success url is hosted
      *
-     * @param string                 $PaymentID
-     * @param \OzairP\PayBud\Context $Context
+     * @param string                                         $PaymentID
+     * @param \OzairP\PayBud\Context|\PayPal\Rest\ApiContext $Context
      *
      * @return bool
      * @throws \OzairP\PayBud\VerificationException
      * @throws \TypeError
      */
-    public function Verify($PaymentID, Context $Context)
+    public function Verify($PaymentID, ApiContext $Context)
     {
         // Validation
         if(!isset($_GET['paymentId'])) throw new VerificationException('paymentID not set.');
