@@ -6,27 +6,40 @@ namespace OzairP\PayBud;
 use PayPal\Auth\OAuthTokenCredential;
 use PayPal\Rest\ApiContext;
 
-class Context
+/**
+ * Class Context
+ * @package OzairP\PayBud
+ */
+class Context extends ApiContext
 {
 
-    protected $PayPalAPIContext = NULL;
+    const MODE_SANDBOX = 'sandbox';
+    const MODE_LIVE = 'live';
 
-    function __construct($ClientID, $ClientSecret, $Mode = 'live')
+    /**
+     * Context constructor.
+     *
+     * @param string $ClientID
+     * @param string $ClientSecret
+     * @param string $Mode
+     * @param string   $LogFileLocation
+     *
+     * @throws \TypeError
+     */
+    function __construct($ClientID, $ClientSecret, $Mode = Context::MODE_LIVE, $LogFileLocation = NULL)
     {
 
-        if($Mode !== 'live' || $Mode !== 'sandbox') throw new \Exception('Mode must be \'live\' or \'sandbox\'');
+        if($Mode !== 'live' && $Mode !== 'sandbox') throw new \TypeError('Mode must be \'live\' or \'sandbox\'');
 
-        $this->PayPalAPIContext = new ApiContext(new OAuthTokenCredential($ClientID, $ClientSecret));
+        parent::__construct(new OAuthTokenCredential($ClientID, $ClientSecret));
 
-        $this->PayPalAPIContext->setConfig([
-            'mode' => $Mode,
+        $this->setConfig([
+            'mode'           => $Mode,
+            'log.LogEnabled' => !is_null($LogFileLocation),
+            'log.FileName'   => $LogFileLocation,
+            'log.LogLevel'   => ($Mode === Context::MODE_LIVE) ? 'INFO' : 'DEBUG',
         ]);
 
-    }
-
-    public function GetContext()
-    {
-        return $this->PayPalAPIContext;
     }
 
 }
