@@ -10,7 +10,12 @@ use PayPal\Api\Payer;
 use PayPal\Api\Payment;
 use PayPal\Api\RedirectUrls;
 use PayPal\Api\Transaction;
+use PayPal\Rest\ApiContext;
 
+/**
+ * Class PaymentFactory
+ * @package OzairP\PayBud
+ */
 class PaymentFactory
 {
 
@@ -58,18 +63,12 @@ class PaymentFactory
     protected $Description = '';
 
     /**
-     * @var string
-     */
-    protected $SKU = '';
-
-    /**
      * PaymentFactory constructor.
      */
     function __construct()
     {
         $this->Payer = new Payer();
         $this->Payer->setPaymentMethod('paypal');
-        $this->SKU = uniqid();
     }
 
     /**
@@ -94,7 +93,7 @@ class PaymentFactory
         $Item->setName($ItemOpts['Name'])
              ->setPrice($ItemOpts['Price'])
              ->setQuantity((isset($ItemOpts['Quantity'])) ? $ItemOpts['Quantity'] : 1)
-             ->setSku($this->SKU)
+             ->setSku((isset($ItemOpts['SKU'])) ? $ItemOpts['SKU'] : uniqid())
              ->setCurrency($this->Options['Currency']);
 
         $this->Items[] = $Item;
@@ -107,11 +106,11 @@ class PaymentFactory
      * URL, and `PaymentID` is the payment id use for
      * verification
      *
-     * @param \OzairP\PayBud\Context $Context
+     * @param \OzairP\PayBud\Context|\PayPal\Rest\ApiContext $Context
      *
      * @return array
      */
-    public function GeneratePayPalURL(Context $Context)
+    public function GeneratePayPalURL(ApiContext $Context)
     {
 
         $ItemList = (new ItemList)->setItems($this->Items);
@@ -314,30 +313,7 @@ class PaymentFactory
     {
         if(!is_string($Description)) throw new \TypeError('Description must be a string');
 
-        $this->CancelURL = $Description;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function GetSKU()
-    {
-        return $this->SKU;
-    }
-
-    /**
-     * @param $SKU
-     *
-     * @return $this
-     * @throws \TypeError
-     */
-    public function SetSKU($SKU)
-    {
-        if(!is_string($SKU)) throw new \TypeError('SKU must be a string');
-
-        $this->SKU = $SKU;
+        $this->Description = $Description;
 
         return $this;
     }
