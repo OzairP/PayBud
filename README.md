@@ -12,13 +12,13 @@ require('./vendor/autoload.php')
 ## Usage
 
 ```PHP
-use OzairP\PayBud;
+use OzairP\PayBud\PayPalFactory;
 
 $Context = PayPalFactory::CreateContext('CLIENTID', 'CLIENTSECRET', 'sandbox');
            
 $FactoryResult = PayPalFactory::CreatePayment()
                      ->SetSuccesURL('web.com?ok')
-                     ->SetCancelURL('web.com?bad');
+                     ->SetCancelURL('web.com?bad')
                      ->SetDescription('Buy Bits')
                      ->NewItem([
                          'Name' => 'Bit',
@@ -33,7 +33,7 @@ $FactoryResult = PayPalFactory::CreatePayment()
  
 SomeHowStore($FactoryResult['PaymentID']);
 
-SomeHowRedirect($FactoryResult['URI'];
+SomeHowRedirect($FactoryResult['URI']);
 
 // When the success URL is called
 $Result = false;
