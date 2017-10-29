@@ -45,7 +45,9 @@ class PayPalVerifier
             throw new VerificationException('Invalid paymentId');
         }
 
-        return $Payment->id === $PaymentID;
+        if ($Payment->id !== $PaymentID) throw new VerficationException('Incoming paymentId invalid');
+        
+        return $Payment;
     }
 
 }
